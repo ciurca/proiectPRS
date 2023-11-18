@@ -38,7 +38,7 @@ email = ?')) {
             $_SESSION['name'] = $nume;
             $_SESSION['id'] = $id;
             echo 'Welcome ' . $_SESSION['name'] . '!';
-            header('Location: home.php');
+            header('Location: /proiect/admin/');
         } else {
 // password incorrect
             echo 'Incorrect email sau password!';

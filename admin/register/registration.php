@@ -12,12 +12,12 @@ if (mysqli_connect_errno()) {
     exit('Nu se poate conecta la MySQL: ' . mysqli_connect_error());
 }
 //.
-if (!isset($_POST['username'], $_POST['password'], $_POST['email'], $_POST['phone'])) {
+if (!isset($_POST['nume'], $_POST['password'], $_POST['email'], $_POST['phone'])) {
 // Nu s-au putut obține datele care ar fi trebuit trimise.
     exit('Complare formular registration !');
 }
 // Asigurați-vă că valorile înregistrării trimise nu sunt goale.
-if (empty($_POST['username']) || empty($_POST['password']) ||
+if (empty($_POST['nume']) || empty($_POST['password']) ||
     empty($_POST['email'])) {
 // One or more values are empty.
     exit('Completare registration form');
@@ -25,8 +25,8 @@ if (empty($_POST['username']) || empty($_POST['password']) ||
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     exit('Email nu este valid!');
 }
-if (preg_match('/[A-Za-z0-9]+/', $_POST['username']) == 0) {
-    exit('Username nu este valid!');
+if (preg_match('/[A-Za-z0-9]+/', $_POST['nume']) == 0) {
+    exit('nume nu este valid!');
 }
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
     exit('Password trebuie sa fie intre 5 si 20 charactere!');
@@ -35,24 +35,24 @@ if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
 if ($stmt = $con->prepare('SELECT ID, parola FROM organizator WHERE 
 nume = ?')) {
 // hash parola folosind funcția PHP password_hash.
-    $stmt->bind_param('s', $_POST['username']);
+    $stmt->bind_param('s', $_POST['nume']);
     $stmt->execute();
     $stmt->store_result();
 // Memoram rezultatul, astfel încât să putem verifica dacă contul există în baza de date.
     if ($stmt->num_rows > 0) {
-// Username exista
-        echo 'Username exists, alegeti altul!';
+// nume exista
+        echo 'nume exists, alegeti altul!';
     } else {
         if ($stmt = $con->prepare('INSERT INTO organizator (nume, 
 parola, email, telefon) VALUES (?, ?, ?, ?)')) {
 // Nu dorim să expunem parole în baza noastră de date, așa că hash parola și utilizați //password_verify atunci când un utilizator se conectează.
             $password = password_hash($_POST['password'],
                 PASSWORD_DEFAULT);
-            $stmt->bind_param('ssss', $_POST['username'], $password,
+            $stmt->bind_param('ssss', $_POST['nume'], $password,
                 $_POST['email'], $_POST['phone']);
             $stmt->execute();
             echo 'Success inregistrat!';
-            header('Location: index.html');
+            header('Location: /proiect/admin/');
         } else {
 // Ceva nu este în regulă cu declarația sql, verificați pentru a vă asigura că tabelul conturilor
 //există cu toate cele 3 câmpuri.
