@@ -14,6 +14,9 @@
                     <a class="nav-link" href="/proiect/admin/profile?id=<?=$_SESSION['id']?>"><i class="fas fa-user-circle"></i> Profile</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/proiect/admin/speaker"><i class="fas fa-comment"></i> Speakers</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/proiect/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>

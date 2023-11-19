@@ -1,6 +1,7 @@
 <?php // connectare bazadedate
 include("../partials/conectare.php");
 include("../partials/auth_check.php");
+include("../partials/navbar.php");
 if ($_GET['id'] != $_SESSION['id']) {
     header('Location: /proiect/admin/');
 }
@@ -50,21 +51,6 @@ nume=?,email=?,telefon=? WHERE id='".$id."'"))
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/proiect/admin/">Eventify Admin</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?id=<?=$_SESSION['id']?>"><i class="fas fa-user-circle"></i> Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../logout/index.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <div class="container mt-5">
     <h1><?php if ($_GET['id'] != '') { echo "Modificare Profil Organizator"; }?></h1>
     <?php if ($error != '') {

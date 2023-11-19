@@ -11,7 +11,6 @@ if ($event_id) {
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        // Check if the event has an organizer and if the logged-in user is the organizer
         if ($row && $_SESSION['id'] != $row['IDOrganizator']) {
             header('Location: /proiect/admin/');
             exit; // Don't forget to exit after sending the header
