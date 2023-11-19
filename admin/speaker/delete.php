@@ -5,7 +5,7 @@ include('../partials/auth_check.php');
 include "../partials/navbar.php";
 $speaker_id = isset($_GET['id']) ? $_GET['id'] : null;
 if ($speaker_id) {
-    // Query to check if the speaker's event is organized by the logged-in user
+    // Query to check if the speaker's events is organized by the logged-in user
     $query = "
         SELECT eveniment.IDOrganizator 
         FROM speaker 
@@ -20,13 +20,13 @@ if ($speaker_id) {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            // Check if the logged-in user is the organizer of the event associated with the speaker
+            // Check if the logged-in user is the organizer of the events associated with the speaker
             if ($row && $_SESSION['id'] != $row['IDOrganizator']) {
                 header('Location: /proiect/admin/');
                 exit;
             }
         } else {
-            // No record found, or the speaker isn't associated with an event
+            // No record found, or the speaker isn't associated with an events
             header('Location: /proiect/admin/');
             exit;
         }
@@ -57,7 +57,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']))
     {
         echo "ERROR: Nu se poate executa delete.";
         echo "<div class='alert alert-warning container mt-5'>Evenimentul nu exista.</div>";
-        echo "<div class='container mt-5'><a class='btn btn-primary' href='/proiect/admin/index.php'>Acasa</a></div>";
+        echo "<div class='container mt-5'><a class='btn btn-primary' href='/proiect/admin/event.php'>Acasa</a></div>";
     }
     $mysqli->close();
 }

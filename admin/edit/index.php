@@ -12,7 +12,7 @@ if ($event_id) {
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        // Check if the event has an organizer and if the logged-in user is the organizer
+        // Check if the events has an organizer and if the logged-in user is the organizer
         if ($row && $_SESSION['id'] != $row['IDOrganizator']) {
             header('Location: /proiect/admin/');
             exit; // Don't forget to exit after sending the header
@@ -22,7 +22,7 @@ if ($event_id) {
         error_log('Prepare failed: ' . $mysqli->error);
     }
 } else {
-    // Handle error - event ID not set
+    // Handle error - events ID not set
     header('Location: /proiect/admin/');
     exit;
 }
