@@ -3,6 +3,7 @@
 session_start();
 include "partials/conectare.php";
 include "partials/navbar.php";
+require_once "shop/ShoppingCart.php";
 
 
 // Check if an events ID has been provided
@@ -134,22 +135,43 @@ $bilet_result = $bilet_stmt->get_result();
         <?php endforeach; ?>
         </tbody>
     </table>
-
+        <?php
+        $shoppingCart = new ShoppingCart();
+        $product_array = $shoppingCart->getAllProduct($event_id);
+        if (! empty($product_array)) {
+            ?>
     <h3>Bilete</h3>
     <table class="table">
         <thead>
         <tr>
             <th>Tip</th>
             <th>Pret</th>
+            <th>Cantitate</th>
+            <th>Cumpara</th>
         </tr>
         </thead>
-        <tbody>
-        <?php while ($bilet= $bilet_result->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($bilet['tip']); ?></td>
-                <td><?php echo htmlspecialchars($bilet['pret']); ?></td>
-            </tr>
-        <?php endwhile; ?>
+        <?php
+            foreach ($product_array as $key => $value) {
+                ?>
+                    <form method="post" action="/proiect/events/shop/cos.php?action=add&id=<?php
+                    echo $value['ID'];?>">
+
+                        <tr>
+                            <td><?php echo $value["tip"];
+                                ?></td>
+                            <td><?php echo
+                                    "$".$product_array[$key]["pret"]; ?>
+                                </td>
+                            <td><input type="text" name="quantity" value="1" size="2" /> </td>
+                        <td> <input type="submit" value="Add to cart"
+                                       class="btnAddAction" /></td>
+                        </tr>
+                    </form>
+                </div>
+                <?php
+            }
+        }
+        ?>
         </tbody>
     </table>
     </table>

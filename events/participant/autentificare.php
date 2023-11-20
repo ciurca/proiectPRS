@@ -18,7 +18,7 @@ if ( !isset($_POST['email'], $_POST['password']) ) {
     exit('Completati username si password !');
 }
 // Pregătiți SQL-ul nostru, pregătirea instrucțiunii SQL va împiedica injecția SQL.
-if ($stmt = $con->prepare('SELECT id, nume, parola FROM participant WHERE 
+if ($stmt = $con->prepare('SELECT ID, nume, parola FROM participant WHERE 
 email = ?')) {
 // Parametrii de legare (s = șir, i = int, b = blob etc.), în cazul nostru numele de utilizator este un șir, //așa că vom folosi „s”
     $stmt->bind_param('s', $_POST['email']);
@@ -36,7 +36,7 @@ email = ?')) {
             session_regenerate_id();
             $_SESSION['loggedinParticipant'] = TRUE;
             $_SESSION['numeParticipant'] = $nume;
-            $_SESSION['idParticpant'] = $id;
+            $_SESSION['idParticipant'] = $id;
             header('Location: /proiect/events/');
         } else {
 // password incorrect
