@@ -1,7 +1,7 @@
 <?php
 include("../partials/conectare.php");
 include('../partials/auth_check.php');
-$IDOrganizator = $_SESSION['id'];
+$IDOrganizator = $_SESSION['idOrganizator'];
 include('../partials/navbar.php');
 ?>
 <html>

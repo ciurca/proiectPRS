@@ -18,7 +18,7 @@ if ( !isset($_POST['email'], $_POST['password']) ) {
     exit('Completati username si password !');
 }
 // Pregătiți SQL-ul nostru, pregătirea instrucțiunii SQL va împiedica injecția SQL.
-if ($stmt = $con->prepare('SELECT id, nume, parola FROM organizator WHERE 
+if ($stmt = $con->prepare('SELECT id, nume, parola FROM participant WHERE 
 email = ?')) {
 // Parametrii de legare (s = șir, i = int, b = blob etc.), în cazul nostru numele de utilizator este un șir, //așa că vom folosi „s”
     $stmt->bind_param('s', $_POST['email']);
@@ -34,11 +34,10 @@ email = ?')) {
 // Verification success! User has loggedin!
 // Creați sesiuni, astfel încât să știm că utilizatorul este conectat, acestea acționează practic ca cookie-//uri, dar rețin datele de pe server.
             session_regenerate_id();
-            $_SESSION['loggedinOrganizator'] = TRUE;
-            $_SESSION['nameOrganizator'] = $nume;
-            $_SESSION['idOrganizator'] = $id;
-            echo 'Welcome ' . $_SESSION['nameOrganizator'] . '!';
-            header('Location: /proiect/admin/');
+            $_SESSION['loggedinParticipant'] = TRUE;
+            $_SESSION['numeParticipant'] = $nume;
+            $_SESSION['idParticpant'] = $id;
+            header('Location: /proiect/events/');
         } else {
 // password incorrect
             echo 'Incorrect email sau password!';

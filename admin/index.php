@@ -11,11 +11,11 @@ include("./partials/auth_check.php");
 <body class="loggedin">
 <?php include './partials/navbar.php';?>
 <div class="container mt-4">
-    <p>Welcome back, <?=$_SESSION['name']?>!</p>
+    <p>Welcome back, <?=$_SESSION['nameOrganizator']?>!</p>
     <h2>Your Events</h2>
     <a class="btn btn-info" href="/proiect/admin/create"><i class="fas fa-calendar"></i> Create a new event</a>
     <?php
-    if ($result = $mysqli->query("SELECT * FROM eveniment WHERE IDOrganizator =" . $_SESSION['id'] . " ORDER BY ID")) {
+    if ($result = $mysqli->query("SELECT * FROM eveniment WHERE IDOrganizator =" . $_SESSION['idOrganizator'] . " ORDER BY ID")) {
         if ($result->num_rows > 0) {
             echo "<table class='table table-striped'>";
             echo "<thead><tr><th>ID</th><th>Title</th><th>Description</th><th>Start Date</th><th>End Date</th><th>Agenda</th><th>Location</th><th></th><th></th></tr></thead>";

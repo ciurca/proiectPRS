@@ -3,7 +3,7 @@
 include("../partials/conectare.php");
 include("../partials/auth_check.php");
 // Verificam daca evenimentul este cel al organizatorul pentru a evita modificarile altor useri.
-$event_id = isset($_GET['id']) ? $_GET['id'] : null;
+$event_id = isset(['idOrganizator']Organizator']) ? $_GET['id'] : null;
 if ($event_id) {
     $query = "SELECT IDOrganizator FROM eveniment WHERE id = ?";
     if ($stmt = $mysqli->prepare($query)) {
@@ -13,7 +13,7 @@ if ($event_id) {
         $row = $result->fetch_assoc();
 
         // Check if the events has an organizer and if the logged-in user is the organizer
-        if ($row && $_SESSION['id'] != $row['IDOrganizator']) {
+        if ($row && $_SESSION['idOrganizator'] != $row['IDOrganizator']) {
             header('Location: /proiect/admin/');
             exit; // Don't forget to exit after sending the header
         }
@@ -30,19 +30,19 @@ if ($event_id) {
 //Modificare datelor
 // se preia id din pagina vizualizare
 $error='';
-if (!empty($_POST['id']))
+if (!empty($_POST['idOrganizator']))
 { if (isset($_POST['submit']))
 { // verificam daca id-ul din URL este unul valid
-    if (is_numeric($_POST['id']))
+    if (is_numeric($_POST['idOrganizator']))
     { // preluam variabilele din URL/form
-        $id = $_POST['id'];
+        $id = $_POST['idOrganizator'];
         $titlu = htmlentities($_POST['titlu'], ENT_QUOTES);
         $descriere= htmlentities($_POST['descriere'], ENT_QUOTES);
         $data_inceput= htmlentities($_POST['data_inceput'], ENT_QUOTES);
         $data_sfarsit= htmlentities($_POST['data_sfarsit'], ENT_QUOTES);
         $agenda = htmlentities($_POST['agenda'], ENT_QUOTES);
         $locatie = htmlentities($_POST['locatie'], ENT_QUOTES);
-        $IDOrganizator= $_SESSION["id"];
+        $IDOrganizator= $_SESSION['idOrganizator'];
             if ($titlu == '' || $data_inceput == '' || $data_sfarsit == '' || $locatie == '' || $IDOrganizator == '')
             {
 // daca sunt goale se afiseaza un mesaj

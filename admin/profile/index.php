@@ -2,18 +2,18 @@
 include("../partials/conectare.php");
 include("../partials/auth_check.php");
 include("../partials/navbar.php");
-if ($_GET['id'] != $_SESSION['id']) {
+if ($_GET['id'] != $_SESSION['idOrganizator']) {
     header('Location: /proiect/admin/');
 }
 //Modificare datelor
 // se preia id din pagina vizualizare
 $error='';
-if (!empty($_POST['id']))
+if (!empty($_POST['idOrganizator']))
 { if (isset($_POST['submit']))
 { // verificam daca id-ul din URL este unul valid
-    if (is_numeric($_POST['id']))
+    if (is_numeric($_POST['idOrganizator']))
     { // preluam variabilele din URL/form
-        $id = $_POST['id'];
+        $id = $_POST['idOrganizator'];
         $nume = htmlentities($_POST['nume'], ENT_QUOTES);
         $email = htmlentities($_POST['email'], ENT_QUOTES);
         $phone = htmlentities($_POST['phone'], ENT_QUOTES);

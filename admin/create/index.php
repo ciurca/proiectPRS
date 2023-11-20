@@ -14,7 +14,7 @@ if (isset($_POST['submit']))
     $data_sfarsit = DateTime::createFromFormat('Y-m-d', $_POST['data_sfarsit'])->format('Y-m-d');
     $agenda = htmlentities($_POST['agenda'], ENT_QUOTES);
     $locatie = htmlentities($_POST['locatie'], ENT_QUOTES);
-    $IDOrganizator= $_SESSION["id"];
+    $IDOrganizator= $_SESSION['idOrganizator'];
 // verificam daca sunt completate
     if ($titlu == '' || $data_inceput == '' || $data_sfarsit == '' || $locatie == '' || $IDOrganizator == '')
     {

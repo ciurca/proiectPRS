@@ -60,7 +60,7 @@ if (isset($_POST['submit']))
         ?>
         <?php
         $dropdown_stmt = $mysqli->prepare("SELECT id, titlu FROM eveniment WHERE IDOrganizator = ? ORDER BY id");
-        $dropdown_stmt->bind_param("i", $_SESSION['id']);
+        $dropdown_stmt->bind_param("i", $_SESSION['idOrganizator']);
         $dropdown_stmt->execute();
         $dropdown_result = $dropdown_stmt->get_result();
         echo "<div class='form-group'>";

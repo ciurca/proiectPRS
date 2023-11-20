@@ -4,10 +4,10 @@ include '../partials/conectare.php';
 
 $error = '';
 
-if (!empty($_POST['id'])) {
+if (!empty($_POST['idOrganizator'])) {
     if (isset($_POST['submit'])) {
-        if (is_numeric($_POST['id'])) {
-            $id = $_POST['id'];
+        if (is_numeric($_POST['idOrganizator'])) {
+            $id = $_POST['idOrganizator'];
             $NUMAR = htmlentities($_POST['NUMAR'], ENT_QUOTES);
             $data_semnarii = htmlentities($_POST['data_semnarii'], ENT_QUOTES);
             $tip = htmlentities($_POST['tip'], ENT_QUOTES);
@@ -88,7 +88,7 @@ if (!empty($_POST['id'])) {
                     ?>
                     <?php
                     $dropdown_stmt = $mysqli->prepare("SELECT id, titlu FROM eveniment WHERE IDOrganizator = ? ORDER BY id");
-                    $dropdown_stmt->bind_param("i", $_SESSION['id']);
+                    $dropdown_stmt->bind_param("i", $_SESSION['idOrganizator']);
                     $dropdown_stmt->execute();
                     $dropdown_result = $dropdown_stmt->get_result();
 

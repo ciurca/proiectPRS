@@ -1,13 +1,9 @@
 <?php
 // Connection code goes here
-include "partials/conectare.php";
 session_start();
+include "partials/conectare.php";
+include "partials/navbar.php";
 
-// Check if the user is logged in and has the right to view the events details
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: /proiect/admin/login.php');
-    exit;
-}
 
 // Check if an events ID has been provided
 $event_id = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -48,11 +44,11 @@ $query = "
     FROM colaborator
     INNER JOIN contract ON colaborator.ID = contract.IDColaborator
     INNER JOIN eveniment ON contract.IDEveniment = eveniment.ID
-    WHERE eveniment.ID = ? AND eveniment.IDOrganizator = ?
+    WHERE eveniment.ID = ?
 ";
 if ($stmt = $mysqli->prepare($query)) {
     // Bind the events ID and the session ID (IDOrganizator) to the prepared statement.
-    $stmt->bind_param("ii", $event_id, $_SESSION['id']);
+    $stmt->bind_param("i", $event_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -70,6 +66,12 @@ if ($stmt = $mysqli->prepare($query)) {
         echo "Error preparing statement: " . htmlspecialchars($mysqli->error);
 }
 
+// Query for speakers of the events
+$bilet_query= "SELECT * FROM bilet WHERE IDEveniment = ?";
+$bilet_stmt = $mysqli->prepare($bilet_query);
+$bilet_stmt->bind_param("i", $event_id);
+$bilet_stmt->execute();
+$bilet_result = $bilet_stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,8 +82,7 @@ if ($stmt = $mysqli->prepare($query)) {
 </head>
 <body>
 <div class="container mt-4">
-    <h2>Event Details: <?php echo htmlspecialchars($event_data['titlu']); ?></h2>
-
+    <h2>Event Details: <?php echo htmlspecialchars($event_data['titlu']) ; ?></h2>
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">Event Information</h5>
@@ -134,6 +135,23 @@ if ($stmt = $mysqli->prepare($query)) {
         </tbody>
     </table>
 
+    <h3>Bilete</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Tip</th>
+            <th>Pret</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php while ($bilet= $bilet_result->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($bilet['tip']); ?></td>
+                <td><?php echo htmlspecialchars($bilet['pret']); ?></td>
+            </tr>
+        <?php endwhile; ?>
+        </tbody>
+    </table>
     </table>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

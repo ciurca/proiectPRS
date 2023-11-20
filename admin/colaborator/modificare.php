@@ -4,10 +4,10 @@ include("../partials/conectare.php");
 
 $error = '';
 
-if (!empty($_POST['id'])) {
+if (!empty($_POST['idOrganizator'])) {
     if (isset($_POST['submit'])) {
-        if (is_numeric($_POST['id'])) {
-            $id = $_POST['id'];
+        if (is_numeric($_POST['idOrganizator'])) {
+            $id = $_POST['idOrganizator'];
             $nume = htmlentities($_POST['nume'], ENT_QUOTES);
             $email = htmlentities($_POST['email'], ENT_QUOTES);
             $telefon = htmlentities($_POST['telefon'], ENT_QUOTES);

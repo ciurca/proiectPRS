@@ -1,5 +1,7 @@
 <?php
+session_start();
 include "partials/conectare.php"; // Replace with the path to your database connection script
+include "partials/navbar.php";
 
 $query = "SELECT eveniment.id, eveniment.titlu, eveniment.data_inceput, eveniment.data_sfarsit, organizator.nume AS organizer_name FROM eveniment INNER JOIN organizator ON eveniment.IDOrganizator = organizator.ID ORDER BY eveniment.id";
 

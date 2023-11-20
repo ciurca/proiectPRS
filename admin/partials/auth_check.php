@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
+if (!isset($_SESSION['loggedinOrganizator'])) {
 header('Location: /proiect/admin/login');
 exit;
 }

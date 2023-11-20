@@ -11,7 +11,7 @@ if ($event_id) {
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        if ($row && $_SESSION['id'] != $row['IDOrganizator']) {
+        if ($row && $_SESSION['idOrganizator'] != $row['IDOrganizator']) {
             header('Location: /proiect/admin/');
             exit; // Don't forget to exit after sending the header
         }

@@ -21,7 +21,7 @@ if ($speaker_id) {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             // Check if the logged-in user is the organizer of the events associated with the speaker
-            if ($row && $_SESSION['id'] != $row['IDOrganizator']) {
+            if ($row && $_SESSION['idOrganizator'] != $row['IDOrganizator']) {
                 header('Location: /proiect/admin/');
                 exit;
             }
