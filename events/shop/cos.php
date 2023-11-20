@@ -4,7 +4,7 @@ session_start();
 require_once "../partials/navbar.php";
 // Dacă utilizatorul nu este conectat redirecționează la pagina de autentificare ...
 if (!isset($_SESSION['loggedinParticipant'])) {
-    header('Location: index.html');
+    header('Location: /proiect/events/participant/index.html');
     exit;
 }
 // pt membrii inregistrati
@@ -44,6 +44,8 @@ if (! empty($_GET["action"])) {
             break;
         case 'transfer':
             $shoppingCart->transferTicketsForUser($member_id);
+            header('Location: /proiect/events/shop/cos.php');
+            break;
     }
 }
 ?>
