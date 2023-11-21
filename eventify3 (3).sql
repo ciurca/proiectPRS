@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 04:06 PM
+-- Generation Time: Nov 21, 2023 at 12:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -59,14 +59,18 @@ CREATE TABLE `bilet_individual` (
 --
 
 INSERT INTO `bilet_individual` (`id`, `IDBilet`, `IDParticipant`) VALUES
-(8, 1, 1),
-(9, 2, 1),
-(10, 2, 1),
-(11, 2, 1),
-(12, 2, 1),
-(13, 2, 1),
-(14, 1, 1),
-(15, 1, 3);
+(16, 2, 3),
+(17, 1, 3),
+(18, 2, 3),
+(19, 2, 3),
+(20, 2, 3),
+(21, 2, 3),
+(22, 2, 3),
+(23, 2, 3),
+(24, 2, 3),
+(25, 2, 3),
+(26, 2, 3),
+(27, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -317,7 +321,7 @@ ALTER TABLE `bilet`
 -- AUTO_INCREMENT for table `bilet_individual`
 --
 ALTER TABLE `bilet_individual`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `colaborator`
@@ -341,7 +345,7 @@ ALTER TABLE `eveniment`
 -- AUTO_INCREMENT for table `istoric_comenzi`
 --
 ALTER TABLE `istoric_comenzi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `organizator`
