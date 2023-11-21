@@ -160,7 +160,7 @@ $bilet_result = $bilet_stmt->get_result();
                             <td><?php echo $value["tip"];
                                 ?></td>
                             <td><?php echo
-                                    "$".$product_array[$key]["pret"]; ?>
+                                    $product_array[$key]["pret"] . " lei"; ?>
                                 </td>
                             <td><input type="text" name="quantity" value="1" size="2" /> </td>
                         <td> <input type="submit" value="Add to cart"

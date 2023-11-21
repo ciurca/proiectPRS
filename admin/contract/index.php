@@ -1,3 +1,6 @@
+<?php include '../partials/auth_check.php';
+include '../partials/conectare.php';
+ include '../partials/navbar.php';?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
@@ -8,8 +11,6 @@
 <h1>Inregistrarile din tabela contracte</h1>
 <p><b>Toate inregistrarile din contracte</b</p>
 <?php
-include '../partials/auth_check.php';
-include '../partials/conectare.php';
 
 
 
@@ -39,7 +40,7 @@ if ($stmt = $mysqli->prepare($query)) {
             echo "<td>" . htmlspecialchars($row->NumeColaborator) . "</td>";
             echo "<td>" . htmlspecialchars($row->TitluEveniment) . "</td>";
             echo "<td><a class='btn btn-primary' href='modificare.php?id=" . htmlspecialchars($row->ID) . "'>Modificare</a> ";
-            echo "<a class='btn btn-danger remove' id='delete-btn' >Stergere</a></td>";
+            echo "<a class='btn btn-primary' href='stergere.php?id=" . htmlspecialchars($row->ID) . "'>Stergere</a> </td>";
             echo "</tr>";
         }
         echo "</table>";

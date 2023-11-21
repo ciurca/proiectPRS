@@ -3,7 +3,7 @@
 include("../partials/conectare.php");
 include("../partials/auth_check.php");
 // Verificam daca evenimentul este cel al organizatorul pentru a evita modificarile altor useri.
-$event_id = isset(['idOrganizator']Organizator']) ? $_GET['id'] : null;
+$event_id = isset($_SESSION['idOrganizator']) ? $_GET['id'] : null;
 if ($event_id) {
     $query = "SELECT IDOrganizator FROM eveniment WHERE id = ?";
     if ($stmt = $mysqli->prepare($query)) {

@@ -17,6 +17,12 @@
                     <a class="nav-link" href="/proiect/admin/speaker"><i class="fas fa-comment"></i> Speakers</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/proiect/admin/contract"><i class="fas fa-file"></i> Contracte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/proiect/admin/colaborator"><i class="fas fa-dollar-sign"></i> Colaboratori</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/proiect/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>
