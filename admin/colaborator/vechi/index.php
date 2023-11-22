@@ -9,8 +9,6 @@ include '../partials/conectare.php';
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-<?php include '../partials/navbar.php';?>
-<div class="container mt-5">
 <h1>Inregistrarile din tabela colaboratori</h1>
 <p><b>Toate inregistrarile din colaboratori</b</p>
 <?php
@@ -47,7 +45,6 @@ else
 $mysqli->close();
 ?>
 <a href="inserare.php">Adauga o noua inregistrarare</a>
-</div>
 </body>
 </html>
 

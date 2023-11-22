@@ -35,8 +35,6 @@ $mysqli->close();
 <head> <title><?php echo "Inserare inregistrare"; ?> </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head> <body>
-<?php include '../partials/navbar.php';?>
-<div class="container mt-5">
 <h1><?php echo "Inserare inregistrare"; ?></h1>
 <?php if ($error != '') {
     echo "<div style='padding:4px; border:1px solid red; color:red'>" . $error."</div>";} ?>
@@ -54,6 +52,5 @@ $mysqli->close();
         <a href="/proiect/admin/colaborator">Index</a>
     </div>
 </form>
-</div>
 </body>
 </html>

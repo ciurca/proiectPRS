@@ -28,13 +28,9 @@ if (isset($_POST['submit']))
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<head>
-    <title><?php echo "Inserare inregistrare"; ?> </title>
+<head> <title><?php echo "Inserare inregistrare"; ?> </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head> <body>
-<?php include '../partials/navbar.php';?>
-<div class="container mt-5">
-
 <h1><?php echo "Inserare inregistrare"; ?></h1>
 <?php if ($error != '') {
     echo "<div style='padding:4px; border:1px solid red; color:red'>" . $error."</div>";} ?>
@@ -88,6 +84,5 @@ if (isset($_POST['submit']))
         <a href="/proiect/admin/contract">Index</a>
     </div>
 </form>
-</div>
 </body>
 </html>
