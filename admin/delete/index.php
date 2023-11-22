@@ -13,14 +13,12 @@ if ($event_id) {
 
         if ($row && $_SESSION['idOrganizator'] != $row['IDOrganizator']) {
             header('Location: /proiect/admin/');
-            exit; // Don't forget to exit after sending the header
+            exit;
         }
     } else {
-        // Handle error - prepare failed
         error_log('Prepare failed: ' . $mysqli->error);
     }
 } else {
-    // Handle error - events ID not set
     header('Location: /proiect/admin/');
     exit;
 }

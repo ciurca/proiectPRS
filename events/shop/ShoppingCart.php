@@ -121,7 +121,6 @@ VALUES (?, ?, ?)";
         $this->updateDB($query, $params);
     }
     function transferTicketsForUser($userID) {
-        // Use the getDBResult function to fetch the tickets that need to be transferred
         $query = "SELECT IDBilet, cantitate FROM istoric_comenzi WHERE IDClient = ?";
         $params = array(
             array(
@@ -137,7 +136,6 @@ VALUES (?, ?, ?)";
                 $quantity = $ticket['cantitate'];
 
                 for ($i = 0; $i < $quantity; $i++) {
-                    // Use the updateDB function to insert each ticket into bilet_individual
                     $insertQuery = "INSERT INTO bilet_individual (IDBilet, IDParticipant) VALUES (?, ?)";
                     $insertParams = array(
                         array(

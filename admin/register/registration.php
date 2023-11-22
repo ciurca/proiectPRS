@@ -19,7 +19,6 @@ if (!isset($_POST['nume'], $_POST['password'], $_POST['email'], $_POST['phone'])
 // Asigurați-vă că valorile înregistrării trimise nu sunt goale.
 if (empty($_POST['nume']) || empty($_POST['password']) ||
     empty($_POST['email'])) {
-// One or more values are empty.
     exit('Completare registration form');
 }
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {

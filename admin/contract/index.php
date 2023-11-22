@@ -26,7 +26,6 @@ include '../partials/conectare.php';
 if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
 
-    // Get the result set from the prepared statement
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
@@ -49,7 +48,6 @@ if ($stmt = $mysqli->prepare($query)) {
         echo "Nu exista inregistrari in tabela!";
     }
 
-    // Close the statement
     $stmt->close();
 }
 else

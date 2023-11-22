@@ -56,7 +56,6 @@ if (isset($_POST['submit']))
         }
         echo "</select></div>";
 
-        // Clean up
         $dropdown_stmt->close();
         if (isset($current_event_stmt)) {
             $current_event_stmt->close();
@@ -76,7 +75,6 @@ if (isset($_POST['submit']))
         }
         echo "</select></div>";
 
-        // Clean up
         $dropdown_stmt->close();
         if (isset($current_event_stmt)) {
             $current_event_stmt->close();

@@ -1,7 +1,6 @@
 <?php
 include "../partials/conectare.php";
 include "../partials/auth_check.php";
-// We need to use sessions, so you should always start sessions using the below code.
 $error='';
 if (isset($_POST['submit']))
 {

@@ -1,22 +1,18 @@
 <?php
-// Connection code goes here
 session_start();
 include "partials/conectare.php";
 include "partials/navbar.php";
 require_once "shop/ShoppingCart.php";
 
 
-// Check if an events ID has been provided
 $event_id = isset($_GET['id']) ? intval($_GET['id']) : null;
 if (!$event_id) {
     echo "No events ID provided.";
     exit;
 }
 
-// Start output buffering
 ob_start();
 
-// Query for events details
 $event_query = "SELECT * FROM eveniment WHERE id = ?";
 $event_stmt = $mysqli->prepare($event_query);
 $event_stmt->bind_param("i", $event_id);
@@ -24,12 +20,10 @@ $event_stmt->execute();
 $event_result = $event_stmt->get_result();
 $event_data = $event_result->fetch_assoc();
 
-// Check if events exists
 if (!$event_data) {
     echo "Event not found.";
     exit;
 }
-// Query for speakers of the events
 $speaker_query = "SELECT * FROM speaker WHERE IDEveniment = ?";
 $speaker_stmt = $mysqli->prepare($speaker_query);
 $speaker_stmt->bind_param("i", $event_id);
@@ -38,7 +32,6 @@ $speaker_result = $speaker_stmt->get_result();
 
 
 
-// First, make sure $event_id is properly initialized from $_GET or other sources.
 
 $query = "
     SELECT colaborator.*
@@ -48,26 +41,20 @@ $query = "
     WHERE eveniment.ID = ?
 ";
 if ($stmt = $mysqli->prepare($query)) {
-    // Bind the events ID and the session ID (IDOrganizator) to the prepared statement.
     $stmt->bind_param("i", $event_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Fetch the results.
     $colaborators = [];
     while ($row = $result->fetch_assoc()) {
         $colaborators[] = $row;
     }
 
-        // Now you have an array of colaborators for the given eveniment.
-        // You can loop through this array to display the colaborator data.
 
     } else {
-        // Handle error - prepare failed
         echo "Error preparing statement: " . htmlspecialchars($mysqli->error);
 }
 
-// Query for speakers of the events
 $bilet_query= "SELECT * FROM bilet WHERE IDEveniment = ?";
 $bilet_stmt = $mysqli->prepare($bilet_query);
 $bilet_stmt->bind_param("i", $event_id);
@@ -182,6 +169,5 @@ $bilet_result = $bilet_stmt->get_result();
 </body>
 </html>
 <?php
-// End output buffering and output everything
 ob_end_flush();
 ?>

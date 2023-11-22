@@ -5,7 +5,6 @@ include('../partials/auth_check.php');
 include "../partials/navbar.php";
 $speaker_id = isset($_GET['id']) ? $_GET['id'] : null;
 if ($speaker_id) {
-    // Query to check if the speaker's events is organized by the logged-in user
     $query = "
         SELECT eveniment.IDOrganizator 
         FROM speaker 
@@ -20,22 +19,18 @@ if ($speaker_id) {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            // Check if the logged-in user is the organizer of the events associated with the speaker
             if ($row && $_SESSION['idOrganizator'] != $row['IDOrganizator']) {
                 header('Location: /proiect/admin/');
                 exit;
             }
         } else {
-            // No record found, or the speaker isn't associated with an events
             header('Location: /proiect/admin/');
             exit;
         }
     } else {
-        // Handle error - prepare failed
         error_log('Prepare failed: ' . $mysqli->error);
     }
 } else {
-    // Handle error - speaker ID not set
     header('Location: /proiect/admin/');
     exit;
 }
