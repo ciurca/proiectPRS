@@ -41,11 +41,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id']))
                 $stmt->execute();
                 $stmt->close();
                 echo "<div class='container mt-5 alert alert-success' role='alert'>Evenimentul a fost sters!</div>";
-                echo "<div class='container mt-5'><a class='btn btn-primary' href='/proiect/admin/event.php'>Acasa</a></div>";
+                echo "<div class='container mt-5'><a class='btn btn-primary' href='/proiect/admin/'>Acasa</a></div>";
             }
         } else {
             echo "<div class='alert alert-warning container mt-5'>Evenimentul nu exista.</div>";
-            echo "<div class='container mt-5'><a class='btn btn-primary' href='/proiect/admin/event.php'>Acasa</a></div>";
+            echo "<div class='container mt-5'><a class='btn btn-primary' href='/proiect/admin/'>Acasa</a></div>";
         }
     }
 

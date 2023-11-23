@@ -82,11 +82,11 @@ if (!empty($_POST['idOrganizator']))
                     ?>
                     <div class="mb-3">
                         <label for="titlu" class="form-label">Titlu:</label>
-                        <input type="text" class="form-control" id="titlu" name="titlu" value="<?php echo htmlspecialchars($row->titlu, ENT_QUOTES); ?>"/>
+                        <input type="text" class="form-control" id="titlu" name="titlu" value="<?php echo $row->titlu; ?>"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriere" class="form-label">Descriere:</label>
-                        <input type="text" class="form-control" id="descriere" name="descriere" value="<?php echo htmlspecialchars($row->descriere, ENT_QUOTES); ?>"/>
+                        <input type="text" class="form-control" id="descriere" name="descriere" value="<?php echo $row->descriere; ?>"/>
                     </div>
                     <div class="mb-3">
                         <label for="data_inceput" class="form-label">Data Inceput:</label>
@@ -98,11 +98,11 @@ if (!empty($_POST['idOrganizator']))
                     </div>
                     <div class="mb-3">
                         <label for="agenda" class="form-label">Agenda:</label>
-                        <textarea class="form-control" id="agenda" name="agenda" rows="4"><?php echo htmlspecialchars($row->agenda, ENT_QUOTES); ?></textarea>
+                        <textarea class="form-control" id="agenda" name="agenda" rows="4"><?php echo $row->agenda; ?></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="locatie" class="form-label">Locatie:</label>
-                        <input type="text" class="form-control" id="locatie" name="locatie" value="<?php echo htmlspecialchars($row->locatie, ENT_QUOTES); ?>"/>
+                        <input type="text" class="form-control" id="locatie" name="locatie" value="<?php echo $row->locatie; ?>"/>
                     </div>
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     <?php

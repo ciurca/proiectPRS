@@ -11,9 +11,9 @@ include("./partials/auth_check.php");
 <body class="loggedin">
 <?php include './partials/navbar.php';?>
 <div class="container mt-4">
-    <p>Welcome back, <?=$_SESSION['nameOrganizator']?>!</p>
-    <h2>Your Events</h2>
-    <a class="btn btn-info" href="/proiect/admin/create"><i class="fas fa-calendar"></i> Create a new event</a>
+    <p>Bine ai revenit, <?=$_SESSION['nameOrganizator']?>!</p>
+    <h2>Evenimentele Tale</h2>
+    <a class="btn btn-info" href="/proiect/admin/create"><i class="fas fa-calendar"></i> Creeaza un nou eveniment</a>
     <?php
     if ($result = $mysqli->query("SELECT * FROM eveniment WHERE IDOrganizator =" . $_SESSION['idOrganizator'] . " ORDER BY ID")) {
         if ($result->num_rows > 0) {
@@ -36,7 +36,7 @@ include("./partials/auth_check.php");
             echo "</tbody>";
             echo "</table>";
         } else {
-            echo "<div class='alert alert-warning' role='alert'>No records found in the table!</div>";
+            echo "<div class='alert alert-warning' role='alert'>Nu s-a gasit niciun eveniment!</div>";
         }
     } else {
         echo "<div class='alert alert-danger' role='alert'>Error: " . $mysqli->error . "</div>";
