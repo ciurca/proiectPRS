@@ -13,7 +13,7 @@ if (!$event_id) {
 
 ob_start();
 
-$event_query = "SELECT * FROM eveniment WHERE id = ?";
+$event_query = "SELECT eveniment.*, organizator.nume FROM eveniment INNER JOIN organizator on eveniment.IDOrganizator = organizator.ID WHERE eveniment.ID = ?";
 $event_stmt = $mysqli->prepare($event_query);
 $event_stmt->bind_param("i", $event_id);
 $event_stmt->execute();
@@ -73,11 +73,18 @@ $bilet_result = $bilet_stmt->get_result();
     <h2>Event Details: <?php echo htmlspecialchars($event_data['titlu']) ; ?></h2>
     <div class="card mb-3">
         <div class="card-body">
-            <h5 class="card-title">Event Information</h5>
-            <p class="card-text">Description: <?php echo htmlspecialchars($event_data['descriere']); ?></p>
-            <p class="card-text">Location: <?php echo htmlspecialchars($event_data['locatie']); ?></p>
-            <p class="card-text">Date Start: <?php echo htmlspecialchars($event_data['data_inceput']); ?></p>
-            <p class="card-text">Date End: <?php echo htmlspecialchars($event_data['data_sfarsit']); ?></p>
+            <h5 class="card-title">Informatii eveniment</h5>
+            <p class="card-text">Organizator: <?php echo htmlspecialchars($event_data['nume']); ?></p>
+            <p class="card-text">Descriere: <?php echo htmlspecialchars($event_data['descriere']); ?></p>
+            <p class="card-text">Locatie: <?php echo htmlspecialchars($event_data['locatie']); ?></p>
+            <p class="card-text">Data Inceput: <?php echo htmlspecialchars($event_data['data_inceput']); ?></p>
+            <p class="card-text">Data Sfarsit: <?php echo htmlspecialchars($event_data['data_sfarsit']); ?></p>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Agenda</h5>
+            <p class="card-text"><?php echo htmlspecialchars($event_data['agenda']); ?></p>
         </div>
     </div>
 
@@ -87,8 +94,6 @@ $bilet_result = $bilet_stmt->get_result();
         <tr>
             <th>Name</th>
             <th>Prename</th>
-            <th>Email</th>
-            <th>Phone</th>
         </tr>
         </thead>
         <tbody>
@@ -96,8 +101,6 @@ $bilet_result = $bilet_stmt->get_result();
             <tr>
                 <td><?php echo htmlspecialchars($speaker['nume']); ?></td>
                 <td><?php echo htmlspecialchars($speaker['prenume']); ?></td>
-                <td><?php echo htmlspecialchars($speaker['email']); ?></td>
-                <td><?php echo htmlspecialchars($speaker['telefon']); ?></td>
             </tr>
         <?php endwhile; ?>
         </tbody>
@@ -163,9 +166,6 @@ $bilet_result = $bilet_stmt->get_result();
     </table>
     </table>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
 <?php

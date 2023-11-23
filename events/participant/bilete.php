@@ -1,9 +1,6 @@
-<!-- my_tickets.php -->
 <?php
 include("../partials/conectare.php");
 include('../partials/auth_check.php');
-
-
 include('../partials/navbar.php');
 
 $query ="SELECT bilet_individual.ID, bilet.tip, eveniment.titlu
@@ -17,6 +14,7 @@ if ($stmt = $mysqli->prepare($query)) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    echo "<html><body>";
     echo "<div class='container mt-5'>";
     echo "<h3>Biletele asociate contului</h3>";
     echo "<table class='table'>";
@@ -33,6 +31,7 @@ if ($stmt = $mysqli->prepare($query)) {
 
     echo "</tbody></table>";
     echo "</div>";
+    echo "</body></html>";
 
     $stmt->close();
 } else {
