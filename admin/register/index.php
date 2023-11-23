@@ -13,6 +13,9 @@
             <input type="text" class="form-control" name="nume" placeholder="Nume Organizator" id="nume" required>
         </div>
         <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username Organizator" id="username" required>
+        </div>
+        <div class="mb-3">
             <input type="email" class="form-control" name="email" placeholder="Email" id="email" required>
         </div>
         <div class="mb-3">

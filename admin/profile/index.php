@@ -8,12 +8,11 @@ if ($_GET['id'] != $_SESSION['idOrganizator']) {
 //Modificare datelor
 // se preia id din pagina vizualizare
 $error='';
-if (!empty($_POST['idOrganizator']))
-{ if (isset($_POST['submit']))
+if (isset($_POST['submit']))
 { // verificam daca id-ul din URL este unul valid
-    if (is_numeric($_POST['idOrganizator']))
+    if (is_numeric($_GET['id']))
     { // preluam variabilele din URL/form
-        $id = $_POST['idOrganizator'];
+        $id = $_GET['id'];
         $nume = htmlentities($_POST['nume'], ENT_QUOTES);
         $email = htmlentities($_POST['email'], ENT_QUOTES);
         $phone = htmlentities($_POST['phone'], ENT_QUOTES);
@@ -37,7 +36,7 @@ nume=?,email=?,telefon=? WHERE id='".$id."'"))
     }
 // daca variabila 'id' nu este valida, afisam mesaj de eroare
     else
-    {echo "id incorect!";} }}
+    {echo "id incorect!";} }
 
 ?>
 

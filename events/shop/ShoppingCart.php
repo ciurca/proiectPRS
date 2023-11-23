@@ -152,5 +152,6 @@ VALUES (?, ?, ?)";
             }
         }
         $this->emptyCart($userID);
+        header("Location: /proiect/events/participant/bilete.php");
     }
 }

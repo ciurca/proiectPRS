@@ -67,10 +67,13 @@ $bilet_result = $bilet_stmt->get_result();
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($event_data['titlu']); ?> - Detalii</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card: 3rem;
+    </style>
 </head>
 <body>
 <div class="container mt-4">
-    <h2>Event Details: <?php echo htmlspecialchars($event_data['titlu']) ; ?></h2>
+    <h2>Detalii eveniment: <?php echo htmlspecialchars($event_data['titlu']) ; ?></h2>
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">Informatii eveniment</h5>
@@ -92,25 +95,22 @@ $bilet_result = $bilet_stmt->get_result();
     <table class="table">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Prename</th>
         </tr>
         </thead>
         <tbody>
         <?php while ($speaker = $speaker_result->fetch_assoc()): ?>
             <tr>
-                <td><?php echo htmlspecialchars($speaker['nume']); ?></td>
-                <td><?php echo htmlspecialchars($speaker['prenume']); ?></td>
+                <td><img class="rounded-circle" height="75px" width="75px" src="/proiect/<?php echo htmlspecialchars($speaker['poza']); ?>" alt="Card image cap"><span class="h4"> <?php echo htmlspecialchars($speaker['nume']) . ' ' . htmlspecialchars($speaker['prenume']); ?></span></td>
+
             </tr>
         <?php endwhile; ?>
         </tbody>
     </table>
-
     <h3>Colaboratori</h3>
     <table class="table">
         <thead>
         <tr>
-            <th>Name</th>
+            <th>Nume</th>
             <th>Tip</th>
             <th>Tip Partener</th>
         </tr>
@@ -137,7 +137,7 @@ $bilet_result = $bilet_stmt->get_result();
             <th>Tip</th>
             <th>Pret</th>
             <th>Cantitate</th>
-            <th>Cumpara</th>
+            <th></th>
         </tr>
         </thead>
         <?php
@@ -153,7 +153,7 @@ $bilet_result = $bilet_stmt->get_result();
                                     $product_array[$key]["pret"] . " lei"; ?>
                                 </td>
                             <td><input type="text" name="quantity" value="1" size="2" /> </td>
-                        <td> <input type="submit" value="Add to cart"
+                        <td> <input class='btn btn-success' type="submit" value="Cumpara"
                                        class="btnAddAction" /></td>
                         </tr>
                     </form>

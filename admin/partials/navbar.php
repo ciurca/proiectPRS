@@ -26,6 +26,9 @@
                     <a class="nav-link" href="/proiect/admin/colaborator"><i class="fas fa-dollar-sign"></i> Colaboratori</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/proiect/admin/bilete"><i class="fas fa-ticket-alt"></i> Bilete</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/proiect/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>

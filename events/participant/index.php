@@ -10,7 +10,7 @@
     <h1>Login</h1>
     <form action="autentificare.php" method="post">
         <div class="form-group mb-3">
-            <input type="text" name="username" placeholder="Username Organizator"
+            <input type="text" name="username" placeholder="Username Participant"
                    id="username" required class="form-control">
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
         </div>
         <input class="btn btn-primary" type="submit" value="Login">
     </form>
-    <div><a href="../register/index.php">Utilizator nou</a></div>
+    <div><a href="/proiect/events/participant/inregistrare.php">Utilizator nou</a></div>
 </div>
 </body>
 </html>

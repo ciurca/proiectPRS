@@ -4,10 +4,9 @@ include '../partials/conectare.php';
 
 $error = '';
 
-if (!empty($_POST['idOrganizator'])) {
-    if (isset($_POST['submit'])) {
-        if (is_numeric($_POST['idOrganizator'])) {
-            $id = $_POST['idOrganizator'];
+if (isset($_POST['submit'])) {
+        if (is_numeric($_SESSION['idOrganizator'])) {
+            $id = $_GET['id'];
             $NUMAR = htmlentities($_POST['NUMAR'], ENT_QUOTES);
             $data_semnarii = htmlentities($_POST['data_semnarii'], ENT_QUOTES);
             $tip = htmlentities($_POST['tip'], ENT_QUOTES);
@@ -30,7 +29,6 @@ if (!empty($_POST['idOrganizator'])) {
             $error = "id incorect!";
         }
     }
-}
 ?>
 
 <html>
@@ -51,7 +49,7 @@ if (!empty($_POST['idOrganizator'])) {
         <?php if ($_GET['id'] != '') { ?>
             <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" />
             <?php
-            if ($result = $mysqli->query("SELECT NUMAR, data_semnarii, tip FROM contract where id='".$_GET['id']."'")) {
+            if ($result = $mysqli->query("SELECT NUMAR, data_semnarii, tip FROM contract WHERE id='".$_GET['id']."'")) {
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_object(); ?>
                     <strong>Numar: </strong> <input type="text" name="NUMAR" value="<?php echo $row->NUMAR; ?>" /><br/>

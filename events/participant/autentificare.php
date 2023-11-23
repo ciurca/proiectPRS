@@ -13,15 +13,15 @@ if ( mysqli_connect_errno() ) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 // Acum verificăm dacă datele din formularul de autentificare au fost trimise, isset () va verifica dacă datele există.
-if ( !isset($_POST['email'], $_POST['password']) ) {
+if ( !isset($_POST['username'], $_POST['password']) ) {
 // Nu s-au putut obține datele care ar fi trebuit trimise.
     exit('Completati username si password !');
 }
 // Pregătiți SQL-ul nostru, pregătirea instrucțiunii SQL va împiedica injecția SQL.
 if ($stmt = $con->prepare('SELECT ID, nume, parola FROM participant WHERE 
-email = ?')) {
+username = ?')) {
 // Parametrii de legare (s = șir, i = int, b = blob etc.), în cazul nostru numele de utilizator este un șir, //așa că vom folosi „s”
-    $stmt->bind_param('s', $_POST['email']);
+    $stmt->bind_param('s', $_POST['username']);
     $stmt->execute();
 // Stocați rezultatul astfel încât să putem verifica dacă contul există în baza de date.
     $stmt->store_result();
@@ -40,11 +40,11 @@ email = ?')) {
             header('Location: /proiect/events/');
         } else {
 // password incorrect
-            echo 'Incorrect email sau password!';
+            echo 'Incorrect username sau password!';
         }
     } else {
 // username incorect
-        echo 'Incorrect email sau password!';
+        echo 'Incorrect username sau password!';
     }
     $stmt->close();
 }

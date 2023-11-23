@@ -17,13 +17,15 @@ include '../partials/conectare.php';
 
     $query = "
     SELECT contract.*, colaborator.nume AS NumeColaborator, eveniment.titlu AS TitluEveniment
-    FROM contract 
+    FROM contract
     INNER JOIN colaborator ON contract.IDColaborator= colaborator.id 
     INNER JOIN eveniment ON contract.IDEveniment = eveniment.id 
+    WHERE eveniment.IDOrganizator = ?
     ORDER BY contract.ID
 ";
 
 if ($stmt = $mysqli->prepare($query)) {
+    $stmt->bind_param("i", $_SESSION['idOrganizator']);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -39,7 +41,7 @@ if ($stmt = $mysqli->prepare($query)) {
             echo "<td>" . htmlspecialchars($row->tip) . "</td>";
             echo "<td>" . htmlspecialchars($row->NumeColaborator) . "</td>";
             echo "<td>" . htmlspecialchars($row->TitluEveniment) . "</td>";
-            echo "<td><a class='btn btn-primary' href='modificare.php?id=" . htmlspecialchars($row->ID) . "'>Modificare</a> ";
+            echo "<td><a class='btn btn-primary' href='/proiect/admin/contract/modificare.php?id=" . htmlspecialchars($row->ID) . "'>Modificare</a> ";
             echo "<a class='btn btn-primary' href='stergere.php?id=" . htmlspecialchars($row->ID) . "'>Stergere</a> </td>";
             echo "</tr>";
         }

@@ -20,16 +20,16 @@ if (!$result) {
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-4">
-    <h2>All Events</h2>
+<div class="container mt-5">
+    <h2>Toate Evenimentele</h2>
     <table class="table">
         <thead>
         <tr>
-            <th>Title</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Organizer</th>
-            <th>Details</th>
+            <th>Titlu Eveniment</th>
+            <th>Data Inceput</th>
+            <th>Data Sfarsit</th>
+            <th>Organizator</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@ if (!$result) {
                 <td><?php echo htmlspecialchars($event['data_sfarsit']); ?></td>
                 <td><?php echo htmlspecialchars($event['organizer_name']); ?></td>
                 <td>
-                    <a href="/proiect/events/event.php?id=<?php echo $event['id']; ?>" class="btn btn-info">View Details</a>
+                    <a href="/proiect/events/event.php?id=<?php echo $event['id']; ?>" class="btn btn-info">Vezi detalii</a>
                 </td>
             </tr>
         <?php endwhile; ?>
