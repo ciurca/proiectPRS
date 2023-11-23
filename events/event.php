@@ -76,22 +76,22 @@ $bilet_result = $bilet_stmt->get_result();
     <h2>Detalii eveniment: <?php echo htmlspecialchars($event_data['titlu']) ; ?></h2>
     <div class="card mb-3">
         <div class="card-body">
-            <h5 class="card-title">Informatii eveniment</h5>
+            <h5 class="card-title"><a href="/proiect/events/detalii/generale.php?id=<?php echo $_GET['id']?>">Informatii eveniment</a></h5>
             <p class="card-text">Organizator: <?php echo htmlspecialchars($event_data['nume']); ?></p>
-            <p class="card-text">Descriere: <?php echo htmlspecialchars($event_data['descriere']); ?></p>
-            <p class="card-text">Locatie: <?php echo htmlspecialchars($event_data['locatie']); ?></p>
+            <p class="card-text">Descriere: <?php echo $event_data['descriere']; ?></p>
+            <p class="card-text">Locatie: <?php echo $event_data['locatie']; ?></p>
             <p class="card-text">Data Inceput: <?php echo htmlspecialchars($event_data['data_inceput']); ?></p>
             <p class="card-text">Data Sfarsit: <?php echo htmlspecialchars($event_data['data_sfarsit']); ?></p>
         </div>
     </div>
     <div class="card mb-3">
         <div class="card-body">
-            <h5 class="card-title">Agenda</h5>
-            <p class="card-text"><?php echo htmlspecialchars($event_data['agenda']); ?></p>
+            <h5 class="card-title"><a href="/proiect/events/detalii/agenda.php?id=<?php echo $_GET['id']?>">Agenda</a></h5>
+            <p class="card-text"><?php echo $event_data['agenda']; ?></p>
         </div>
     </div>
 
-    <h3>Speakers</h3>
+    <h3><a href="/proiect/events/detalii/speakers.php?id=<?php echo $_GET['id']?>">Speakers</a></h3>
     <table class="table">
         <thead>
         <tr>
@@ -100,13 +100,13 @@ $bilet_result = $bilet_stmt->get_result();
         <tbody>
         <?php while ($speaker = $speaker_result->fetch_assoc()): ?>
             <tr>
-                <td><img class="rounded-circle" height="75px" width="75px" src="/proiect/<?php echo htmlspecialchars($speaker['poza']); ?>" alt="Card image cap"><span class="h4"> <?php echo htmlspecialchars($speaker['nume']) . ' ' . htmlspecialchars($speaker['prenume']); ?></span></td>
+                <td><img class="rounded-circle" height="75px" width="75px" src="/proiect/<?php echo $speaker['poza']; ?>" alt="Card image cap"><span class="h4"> <?php echo htmlspecialchars($speaker['nume']) . ' ' . htmlspecialchars($speaker['prenume']); ?></span></td>
 
             </tr>
         <?php endwhile; ?>
         </tbody>
     </table>
-    <h3>Colaboratori</h3>
+    <h3><a href="/proiect/events/detalii/colaboratori.php?id=<?php echo $_GET['id']?>">Colaboratori</a></h3>
     <table class="table">
         <thead>
         <tr>
@@ -118,9 +118,9 @@ $bilet_result = $bilet_stmt->get_result();
         <tbody>
         <?php foreach ($colaborators as $colab): ?>
             <tr>
-                <td><?php echo htmlspecialchars($colab['nume']); ?></td>
-                <td><?php echo htmlspecialchars($colab['tip']); ?></td>
-                <td><?php echo htmlspecialchars($colab['tip_parteneriat']); ?></td>
+                <td><?php echo $colab['nume']; ?></td>
+                <td><?php echo $colab['tip']; ?></td>
+                <td><?php echo $colab['tip_parteneriat']; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -130,7 +130,7 @@ $bilet_result = $bilet_stmt->get_result();
         $product_array = $shoppingCart->getAllProduct($event_id);
         if (! empty($product_array)) {
             ?>
-    <h3>Bilete</h3>
+    <h3><a href="/proiect/events/detalii/bilete.php?id=<?php echo $_GET['id']?>">Bilete</a></h3>
     <table class="table">
         <thead>
         <tr>
